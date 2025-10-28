@@ -13,7 +13,7 @@ services:
       - 46931:46931
       - 46931:46931/udp
     command: >
-      bash -c "echo [[roles]]\name = \"admin\"\nroutes = [\"GET /v1/openvpn/status\", \"PUT /v1/openvpn/status\", \"GET /v1/openvpn/portforwarded\", \"GET /v1/publicip/ip\"]\auth = \"none\" > /gluetun/auth/config.toml
+      sh -c "echo [[roles]]\name = \"admin\"\nroutes = [\"GET /v1/openvpn/status\", \"PUT /v1/openvpn/status\", \"GET /v1/openvpn/portforwarded\", \"GET /v1/publicip/ip\"]\auth = \"none\" > /gluetun/auth/config.toml
       && echo ${OVPN_CFG} > /gluetun/custom.conf"
     environment:
       - OVPN_CFG=${OVPN_CFG}
@@ -22,8 +22,8 @@ services:
       - TZ=${TZ}
       - UPDATER_PERIOD=24h
       - OPENVPN_CUSTOM_CONFIG=/gluetun/custom.conf
-      - OPENVPN_USER=$USERNAME
-      - OPENVPN_PASSWORD=$PASSWORD
+      - OPENVPN_USER=${USERNAME}
+      - OPENVPN_PASSWORD=${PASSWORD}
       - OPENVPN_CUSTOM_ARGUMENTS=--pull-filter ignore connection-reset --pull-filter ignore route-ipv6 --pull-filter ignore ifconfig-ipv6 --auth-nocache
       - DOT=off
       - DNS_SERVERS=1.1.1.1,8.8.8.8
