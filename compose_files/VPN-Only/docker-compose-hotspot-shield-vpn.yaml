@@ -25,12 +25,6 @@ services:
       - OPENVPN_CUSTOM_ARGUMENTS=--pull-filter ignore connection-reset --pull-filter ignore route-ipv6 --pull-filter ignore ifconfig-ipv6 --auth-nocache
       - DOT=off
       - DNS_SERVERS=1.1.1.1,8.8.8.8
-      - FIREWALL=on
-      - FIREWALL_DEBUG=off
-      - FIREWALL_VPN_INPUT_PORTS=8041
-      - FIREWALL_OUTBOUND_SUBNETS=192.168.100.0/24
-      - HEALTH_TARGET_ADDRESS=192.168.100.105:53
-      - HEALTH_VPN_WAIT_DURATION=60s
       - HTTP_CONTROL_SERVER_LOG=on
     volumes:
       - ${COMMON_PATH}:${COMMON_PATH}
