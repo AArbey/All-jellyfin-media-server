@@ -12,8 +12,6 @@ services:
       # - 51820:51820/udp
       - 46931:46931
       - 46931:46931/udp
-    command: >
-      sh -c "echo ${OVPN_CFG} > /gluetun/custom.conf"
     environment:
       - VPN_SERVICE_PROVIDER=custom
       - VPN_TYPE=openvpn
@@ -29,6 +27,7 @@ services:
     volumes:
       - ${COMMON_PATH}:${COMMON_PATH}
       - ${COMMON_PATH}/gluetun:/gluetun
+      - /root/vpn.ovpn:/gluetun/custom.conf
     restart: always
 
   qbittorrent:
