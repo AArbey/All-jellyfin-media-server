@@ -18,7 +18,12 @@ services:
       # Uncomment to specify custom MTU (advanced)
       # - WIREGUARD_MTU=1420
     ports:
-      - 8080:8080 # example port mapping
+      - 8080:8080 
+      - 9696:9696
+      - 51820:51820
+      - 51820:51820/udp
+      - 46931:46931
+      - 46931:46931/udp
     restart: unless-stopped
 
   qbittorrent:
@@ -62,8 +67,6 @@ services:
       - WEBUI_PORT=9696
     volumes:
       - ${COMMON_PATH}/configs/prowlarr:/config
-    ports:
-      - 9696:9696
     restart: unless-stopped
 
   jackett:
