@@ -16,7 +16,7 @@ services:
       - WIREGUARD_ENDPOINT_PORT=${WIREGUARD_ENDPOINT_PORT}
       - WIREGUARD_DNS=${WIREGUARD_DNS}
       # Uncomment to specify custom MTU (advanced)
-      - WIREGUARD_MTU=1550
+      - WIREGUARD_MTU=1500
     ports:
       - 8080:8080 
       - 9696:9696
