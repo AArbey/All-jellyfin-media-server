@@ -17,9 +17,7 @@ services:
       - VPN_TYPE=openvpn
       - TZ=${TZ}
       - UPDATER_PERIOD=24h
-      - OPENVPN_CUSTOM_CONFIG=/gluetun/custom.conf
-      - OPENVPN_USER=${USERNAME}
-      - OPENVPN_PASSWORD=${PASSWORD}
+      - OPENVPN_CUSTOM_CONFIG=/gluetun/conf.ovpn
       - OPENVPN_CUSTOM_ARGUMENTS=--pull-filter ignore connection-reset --pull-filter ignore route-ipv6 --pull-filter ignore ifconfig-ipv6 --auth-nocache
       - DOT=off
       - DNS_SERVERS=1.1.1.1,8.8.8.8
@@ -27,7 +25,6 @@ services:
     volumes:
       - ${COMMON_PATH}:${COMMON_PATH}
       - ${COMMON_PATH}/gluetun:/gluetun
-      - /root/vpn.ovpn:/gluetun/custom.conf
     devices:
       - /dev/net/tun:/dev/net/tun
     restart: always
